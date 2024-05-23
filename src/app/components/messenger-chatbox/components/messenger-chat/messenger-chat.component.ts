@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 import Swiper from 'swiper';
 import { MessengerChatboxService } from '../../services/messenger-chatbox.service';
-import { chatBoxMessage } from '../../model/messenger-chatbox.model';
+import { chatBoxMessage, userMessages,myFile } from '../../model/messenger-chatbox.model';
 import { Constants } from 'src/app/components/shared/configs/constants';
 
 @Component({
@@ -17,6 +17,12 @@ export class MessengerChatComponent implements AfterViewInit {
   @ViewChild('attachmentInput') attachmentInput: ElementRef;
   userChatBox: chatBoxMessage[] = []
   currentDate:Date=new Date();
+  fileBuffer: myFile= {
+    file: null,
+    fileUrl: null,
+    fileIcon: null
+  
+  };
   constructor(private messengerChatboxService: MessengerChatboxService) {
     let date = new Date().getTime();   
     let yesterday = new Date(date - 1000 * 60 * 60 * 24 * 1);
@@ -29,11 +35,13 @@ export class MessengerChatComponent implements AfterViewInit {
             { content: 'Hi Jake, how are you? I saw on the app that we’ve crossed paths several times this week😄', 
             type: 'received', 
             contentType: 'text' ,
+            file: this.fileBuffer,
             timeStamp:yesterday }, //recieved yesterdays date
             { content: 'Haha truly! Nice to meet you Grace! What about a cup of coffee today evening?☕️', 
             type: 'sent', 
-            contentType: 'text' 
-            ,timeStamp:onehourago //sent 1 hour ago
+            contentType: 'text',
+            file: this.fileBuffer,
+            timeStamp:onehourago //sent 1 hour ago
             }
           ]
     }
@@ -73,12 +81,17 @@ export class MessengerChatComponent implements AfterViewInit {
 
   // send message
   sendMessage() {
-    if (this.newMessageContent.trim() !== '') {
+    if (this.newMessageContent.trim() !== '' || this.fileBuffer!=null) {
       const currentIndex = this.chatboxSwiper?.realIndex;
       const Time = new Date();
-      const newMessage = { content: this.newMessageContent, type: 'sent', contentType: 'text' ,timeStamp: Time};
+      let  newMessage:userMessages = { content: this.newMessageContent, type: 'sent',timeStamp: Time,file:this.fileBuffer};
       this.userChatBox[currentIndex].messages.push(newMessage);
       this.newMessageContent = '';
+      this.fileBuffer = {
+        file: null,
+        fileUrl: null,
+        fileIcon: null
+      };
     }
   }
 
@@ -102,9 +115,11 @@ export class MessengerChatComponent implements AfterViewInit {
         Constants.fileIconList.filter((row) => {
           row.type == files[0].name?.split('.').pop() ? fileIcon = row.icon : '';
         });
-        const newMessage = { content: files[0], type: 'sent', contentType: 'attachment', fileUrl: e.target.result, fileIcon ,timeStamp:new Date()};
-        this.userChatBox[currentIndex].messages.push(newMessage);
-        this.attachmentInput.nativeElement.value = '';
+        this.fileBuffer = {
+          file: files[0],
+          fileUrl: e.target.result,
+          fileIcon: fileIcon
+        }; 
       };
 
       // Read the file as a data URL

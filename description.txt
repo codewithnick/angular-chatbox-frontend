@@ -32,3 +32,23 @@ and not after
 commit 4:
 added gilroy font globally
 
+commit 5:
+added the ability to send messages with files
+modified user message model and created a custom file model
+export interface userMessages {
+    content: string;
+    type: string;
+    file: myFile;
+    timeStamp: Date
+}
+export interface myFile{
+    file?: any;
+    fileUrl?: any;
+    fileIcon?: string;
+}
+instead of pushing the message directly to the messages array when uploading the file ,
+I created a fileBuffer which stores the file and a div to preview uploaded filename 
+and then when the user clicks send
+the fileBuffer is pushed to the messages array along with the message in the textbox
+even if the textbox is empty
+

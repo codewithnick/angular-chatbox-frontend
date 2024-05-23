@@ -6,14 +6,16 @@ export interface chatHeadUser {
 }
 
 export interface userMessages {
-    content: any;
+    content: string;
     type: string;
-    contentType: string;
-    fileUrl?: any;
-    fileIcon?: string;
+    file: myFile;
     timeStamp: Date
 }
-
+export interface myFile{
+    file?: any;
+    fileUrl?: any;
+    fileIcon?: string;
+}
 export interface chatBoxMessage {
     userId: number;
     messages: userMessages[]

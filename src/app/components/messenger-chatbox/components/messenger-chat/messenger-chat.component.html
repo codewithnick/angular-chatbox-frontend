@@ -7,29 +7,26 @@
                 <div class="chatbox-card">
                     <div class="chatbox-card-body">
                         <div *ngFor="let message of chat['messages']">
-                            <ng-container *ngIf="message.contentType === 'text'">
+                            <ng-container>
                                 <div class="message mb-3"
                                     [ngClass]="message.type == 'received' ? 'received-message' : 'sent-message'">
+                                    <!-- display file if not null -->
+                                    <div *ngIf="message.file.file!=null" class="attachment-card mb-3 d-flex align-items-center justify-content-end">
+                                        <!-- image preview -->
+                                        <div *ngIf="isImage(message.file.file); else otherFile">
+                                            <img class="img-fluid attachment-image" [src]="message.file.fileUrl"
+                                                alt="Attachment">
+                                        </div>
+                                        <!-- file preview -->
+                                        <ng-template #otherFile>
+                                            <img class="file-icon me-2" [src]="'assets/images/' + message.file.fileIcon"
+                                                alt="File">
+                                            <div class="file-name">{{ message?.file?.file.name }}</div>
+                                        </ng-template>                                        
+                                    </div>
                                     <!-- display text content -->
                                     {{ message.content }}
-                                    <div class="Timestamp" >
-                                        {{ message.timeStamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit',hourCycle:'h23'}) }}
-                                    </div>
-                                </div>
-                            </ng-container>
-                            <ng-container *ngIf="message.contentType !== 'text'">
-                                <div class="attachment-card mb-3 d-flex align-items-center justify-content-end">
-                                    <!-- image preview -->
-                                    <div *ngIf="isImage(message.content); else otherFile">
-                                        <img class="img-fluid attachment-image" [src]="message.fileUrl"
-                                            alt="Attachment">
-                                    </div>
-                                    <!-- file preview -->
-                                    <ng-template #otherFile>
-                                        <img class="file-icon me-2" [src]="'assets/images/' + message.fileIcon"
-                                            alt="File">
-                                        <div class="file-name">{{ message?.content?.name }}</div>
-                                    </ng-template>
+                                    <!-- display time -->
                                     <div class="Timestamp" >
                                         {{ message.timeStamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit',hourCycle:'h23'}) }}
                                     </div>
@@ -37,6 +34,11 @@
                             </ng-container>
                         </div>
                     </div>
+                    
+                    <div *ngIf="fileBuffer.file!=null" class="filepreviewtext">
+                        File:{{fileBuffer.file.name}}
+                    </div>
+                    
                     <div class="chatbox-card-footer mb-2">
                         <div class="textarea-container">
                             <textarea class="form-control" placeholder="Your Message" [(ngModel)]="newMessageContent"
