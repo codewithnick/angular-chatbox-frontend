@@ -12,6 +12,9 @@
                                     [ngClass]="message.type == 'received' ? 'received-message' : 'sent-message'">
                                     <!-- display text content -->
                                     {{ message.content }}
+                                    <div class="Timestamp" >
+                                        {{ message.timeStamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit',hourCycle:'h23'}) }}
+                                    </div>
                                 </div>
                             </ng-container>
                             <ng-container *ngIf="message.contentType !== 'text'">
@@ -27,6 +30,9 @@
                                             alt="File">
                                         <div class="file-name">{{ message?.content?.name }}</div>
                                     </ng-template>
+                                    <div class="Timestamp" >
+                                        {{ message.timeStamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit',hourCycle:'h23'}) }}
+                                    </div>
                                 </div>
                             </ng-container>
                         </div>

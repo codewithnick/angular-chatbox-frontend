@@ -15,15 +15,32 @@ export class MessengerChatComponent implements AfterViewInit {
   newMessageContent: string = '';
   showEmojiPallet:boolean = false;
   @ViewChild('attachmentInput') attachmentInput: ElementRef;
-  userChatBox: chatBoxMessage[] = [
-    { userId: 1, messages: [{ content: 'Hi Jake, how are you? I saw on the app that we’ve crossed paths several times this week😄', type: 'received', contentType: 'text' }, { content: 'Haha truly! Nice to meet you Grace! What about a cup of coffee today evening?☕️', type: 'sent', contentType: 'text' }] },
-    { userId: 2, messages: [{ content: 'Hi Jake2, how are you? I saw on the app that we’ve crossed paths several times this week😄', type: 'received', contentType: 'text' }, { content: 'Haha truly! Nice to meet you Grace! What about a cup of coffee today evening?☕️', type: 'sent', contentType: 'text' }] },
-    { userId: 3, messages: [{ content: 'Hi Jake3, how are you? I saw on the app that we’ve crossed paths several times this week😄', type: 'received', contentType: 'text' }, { content: 'Haha truly! Nice to meet you Grace! What about a cup of coffee today evening?☕️', type: 'sent', contentType: 'text' }] },
-    { userId: 4, messages: [{ content: 'Hi Jake4, how are you? I saw on the app that we’ve crossed paths several times this week😄', type: 'received', contentType: 'text' }, { content: 'Haha truly! Nice to meet you Grace! What about a cup of coffee today evening?☕️', type: 'sent', contentType: 'text' }] },
-    { userId: 5, messages: [{ content: 'Hi Jake5, how are you? I saw on the app that we’ve crossed paths several times this week😄', type: 'received', contentType: 'text' }, { content: 'Haha truly! Nice to meet you Grace! What about a cup of coffee today evening?☕️', type: 'sent', contentType: 'text' }] }
-  ];
-
+  userChatBox: chatBoxMessage[] = []
+  currentDate:Date=new Date();
   constructor(private messengerChatboxService: MessengerChatboxService) {
+    let date = new Date().getTime();   
+    let yesterday = new Date(date - 1000 * 60 * 60 * 24 * 1);
+    let onehourago = new Date(date - 1000 * 60 * 60);
+
+    let user_obj={
+       userId: 1, 
+       messages: 
+       [
+            { content: 'Hi Jake, how are you? I saw on the app that we’ve crossed paths several times this week😄', 
+            type: 'received', 
+            contentType: 'text' ,
+            timeStamp:yesterday }, //recieved yesterdays date
+            { content: 'Haha truly! Nice to meet you Grace! What about a cup of coffee today evening?☕️', 
+            type: 'sent', 
+            contentType: 'text' 
+            ,timeStamp:onehourago //sent 1 hour ago
+            }
+          ]
+    }
+    for(let i=0;i<5;i++){
+      user_obj.userId = i+1;
+      this.userChatBox.push(user_obj);
+    }
   }
 
   ngAfterViewInit(): void {
@@ -58,7 +75,8 @@ export class MessengerChatComponent implements AfterViewInit {
   sendMessage() {
     if (this.newMessageContent.trim() !== '') {
       const currentIndex = this.chatboxSwiper?.realIndex;
-      const newMessage = { content: this.newMessageContent, type: 'sent', contentType: 'text' };
+      const Time = new Date();
+      const newMessage = { content: this.newMessageContent, type: 'sent', contentType: 'text' ,timeStamp: Time};
       this.userChatBox[currentIndex].messages.push(newMessage);
       this.newMessageContent = '';
     }
@@ -84,7 +102,7 @@ export class MessengerChatComponent implements AfterViewInit {
         Constants.fileIconList.filter((row) => {
           row.type == files[0].name?.split('.').pop() ? fileIcon = row.icon : '';
         });
-        const newMessage = { content: files[0], type: 'sent', contentType: 'attachment', fileUrl: e.target.result, fileIcon };
+        const newMessage = { content: files[0], type: 'sent', contentType: 'attachment', fileUrl: e.target.result, fileIcon ,timeStamp:new Date()};
         this.userChatBox[currentIndex].messages.push(newMessage);
         this.attachmentInput.nativeElement.value = '';
       };
