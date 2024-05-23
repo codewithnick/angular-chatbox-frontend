@@ -1,0 +1,21 @@
+run instructions:
+1. npm install
+2. cd ./dist/out-tsc
+3. ng serve
+
+commit 1:
+
+first I changed the hardcoded message values and initalised the messages using the constructor
+in messenger-chat.components.ts
+
+then I updated the model of message to hold a extra attribute called timeStamp of type Date
+in messenger-chatbox.model.ts
+
+then I updated the message objects to hold the timeStamp attribute
+in messenger-chat.component.ts
+
+then I updated the html to display the timeStamp
+in messenger-chat.component.html
+
+commit 2:
+added minor css changes to fit responders input
