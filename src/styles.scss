@@ -1,7 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~swiper/swiper-bundle.css";
 @import '@ctrl/ngx-emoji-mart/picker';
-
+@font-face {
+  font-family: 'gilroy';
+  src: url('../assets/fonts/gilroy/Gilroy-Regular.ttf') format('truetype');
+}
+*{
+    font-family: 'gilroy';
+}
 /*-----------------
 scrollbar styling
 ------------------*/

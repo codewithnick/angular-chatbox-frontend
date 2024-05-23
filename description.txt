@@ -29,3 +29,6 @@ so it is called only once
 while the component is initialised
 and not after
 
+commit 4:
+added gilroy font globally
+
