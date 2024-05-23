@@ -39,14 +39,19 @@ export class MessengerChatHeadComponent implements AfterViewInit {
         slideActiveClass: 'selected-slide',
         initialSlide: 2,
         spaceBetween: 30,
+        touchStartPreventDefault: false,
+        effect :'slide',
+        speed: 900,
         grabCursor: true,
         centeredSlides: true,
         slidesPerView: 'auto',
         on: {
           // set index of service when slide change
           slideChange: () => {
-            this.messengerChatboxService.setSelectedSlideIndex(this.chatHeadSwiper?.realIndex);
-            this.selectedUser = this.users[this.chatHeadSwiper?.realIndex];
+            setTimeout(() => {
+              this.messengerChatboxService.setSelectedSlideIndex(this.chatHeadSwiper?.realIndex);
+              this.selectedUser = this.users[this.chatHeadSwiper?.realIndex];
+            }, 100);
           }
         }
       });

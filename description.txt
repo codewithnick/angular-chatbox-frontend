@@ -52,3 +52,13 @@ and then when the user clicks send
 the fileBuffer is pushed to the messages array along with the message in the textbox
 even if the textbox is empty
 
+commit 6:
+some random design improvements
+
+commit 7:
+added smooth transitions to slider
+added alert you are holding my head to all message head components
+by adding touchStartPreventDefault: false to swiperOptions
+
+commit 8:
+
