@@ -1,0 +1,10 @@
+<div class="messenger-chat-head" (mousedown)="startTimer()" (mouseup)="endTimer()">
+        <div class="swiper-container">
+            <div class="swiper-wrapper align-items-center">
+                <div class="swiper-slide" *ngFor="let user of users" (click)="selectUser(user)">
+                    <img class="profile-picture" [src]="user.profilePicture" *ngIf="user !== selectedUser">
+                    <lib-circle-progress imageUrl="{{user.profilePicture}}" *ngIf="user === selectedUser" class="selected" [value]="user.id" [max]="users.length"></lib-circle-progress>
+                </div>
+            </div>
+        </div>
+    </div>

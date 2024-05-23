@@ -1,0 +1,61 @@
+<div class="messenger-chat">
+    <!-- swiper container -->
+    <div class="chat-swiper-container">
+        <div class="swiper-wrapper align-items-center">
+            <div class="swiper-slide" *ngFor="let chat of userChatBox; let i = index">
+                <!-- chatbox card -->
+                <div class="chatbox-card">
+                    <div class="chatbox-card-body">
+                        <div *ngFor="let message of chat['messages']">
+                            <ng-container *ngIf="message.contentType === 'text'">
+                                <div class="message mb-3"
+                                    [ngClass]="message.type == 'received' ? 'received-message' : 'sent-message'">
+                                    <!-- display text content -->
+                                    {{ message.content }}
+                                </div>
+                            </ng-container>
+                            <ng-container *ngIf="message.contentType !== 'text'">
+                                <div class="attachment-card mb-3 d-flex align-items-center justify-content-end">
+                                    <!-- image preview -->
+                                    <div *ngIf="isImage(message.content); else otherFile">
+                                        <img class="img-fluid attachment-image" [src]="message.fileUrl"
+                                            alt="Attachment">
+                                    </div>
+                                    <!-- file preview -->
+                                    <ng-template #otherFile>
+                                        <img class="file-icon me-2" [src]="'assets/images/' + message.fileIcon"
+                                            alt="File">
+                                        <div class="file-name">{{ message?.content?.name }}</div>
+                                    </ng-template>
+                                </div>
+                            </ng-container>
+                        </div>
+                    </div>
+                    <div class="chatbox-card-footer mb-2">
+                        <div class="textarea-container">
+                            <textarea class="form-control" placeholder="Your Message" [(ngModel)]="newMessageContent"
+                                rows="3"></textarea>
+                        </div>
+                        <div class="icon-container">
+                            <!-- send message -->
+                            <div class="icon" (click)="sendMessage()"
+                                [class.disabled]="newMessageContent.trim() === ''"><img src="assets/images/send.png">
+                            </div>
+                            <!-- attachment -->
+                            <div class="icon" (click)="openFileSelection()">
+                                <img src="assets/images/attachment.png">
+                                <!-- Hidden file input for attachment -->
+                                <input class="d-none" type="file" #attachmentInput (change)="handleFileSelect($event)">
+                            </div>
+                            <!-- emoji -->
+                            <div class="icon"><img src="assets/images/emoji.png" (click)="showEmojiPallet = !showEmojiPallet">
+                                <emoji-mart class="emoji-select" [style]="{ position: 'absolute', top:'75px', right: '50px', width:'300px'}" title="Pick your emoji…" emoji="point_up" (emojiClick)="addEmoji($event)" *ngIf="showEmojiPallet"></emoji-mart>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+                    

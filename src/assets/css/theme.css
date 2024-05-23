@@ -1,0 +1,13 @@
+html,
+body {
+    padding: 0;
+    margin: 0;
+    position: relative;
+    height: 100%;
+}
+
+.messenger-chatbox-page {
+    height: 100%;
+    background-color: var(--primary-black);
+    overflow-x: hidden;
+}

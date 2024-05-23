@@ -1,0 +1,36 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~swiper/swiper-bundle.css";
+@import '@ctrl/ngx-emoji-mart/picker';
+
+/*-----------------
+scrollbar styling
+------------------*/
+// moz
+@-moz-document url-prefix() {
+  * {
+    scrollbar-width: thin;
+    scrollbar-base-color: rgba(0, 0, 0, 0.5);
+    scrollbar-color: var(--cyrano-pink-shade-1, #fe3c72) transparent;
+  }
+}
+body {
+  font-family: "Gilroy-Regular", sans-serif;
+}
+// webkit
+::-webkit-scrollbar {
+  width: 8px;
+  opacity: 0.5;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--cyrano-dark-color, #28252d);
+  opacity: 0.5;
+}
+
+::-webkit-scrollbar-thumb {
+  width: 5px;
+  background-color: var(--cyrano-pink-shade-1, #fe3c72);
+  opacity: 0.5;
+  border: 3px solid #000;
+}

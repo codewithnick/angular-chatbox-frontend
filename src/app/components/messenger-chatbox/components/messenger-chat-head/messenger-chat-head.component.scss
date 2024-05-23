@@ -1,0 +1,50 @@
+.messenger-chat-head {
+  // swiper css
+  .swiper-container {
+    width: 100%;
+    padding: 16px;
+
+    .swiper-wrapper {
+      width: fit-content;
+
+      .swiper-slide {
+        background-position: center;
+        background-size: cover;
+        width: auto;
+        height: auto;
+        border-radius: 50%;
+
+        .profile-picture {
+          width: 70px;
+          height: 70px;
+          cursor: pointer;
+          transition: border 0.3s ease-in-out;
+        }
+      }
+
+      .swiper-slide.selected-slide {
+        .profile-picture {
+          width: 80px;
+          height: 80px;
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: 576px) {
+   
+   .swiper-slide .profile-picture {
+        width: 45px !important;
+        height: 45px !important;
+      }
+  
+      .swiper-slide.selected-slide {
+          width: 70px !important;
+          height: 70px !important;
+          .selected {
+            width: 70px;
+          }
+        }
+      }
+  
+}
