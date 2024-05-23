@@ -2,8 +2,8 @@
         <div class="swiper-container">
             <div class="swiper-wrapper align-items-center">
                 <div class="swiper-slide" *ngFor="let user of users" (click)="selectUser(user)">
-                    <img class="profile-picture" [src]="user.profilePicture" *ngIf="user !== selectedUser">
-                    <lib-circle-progress imageUrl="{{user.profilePicture}}" *ngIf="user === selectedUser" class="selected" [value]="user.id" [max]="users.length"></lib-circle-progress>
+                    <img *ngIf='user!==selectedUser' class="profile-picture" [src]="user.profilePicture" alt = "None">
+                    <lib-circle-progress *ngIf='user===selectedUser' imageUrl="{{user.profilePicture}}" class="selected" [value]="user.id" [max]="users.length"></lib-circle-progress>
                 </div>
             </div>
         </div>

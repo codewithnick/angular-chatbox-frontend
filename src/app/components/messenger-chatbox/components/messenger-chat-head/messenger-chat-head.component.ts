@@ -10,18 +10,26 @@ import { MessengerChatboxService } from '../../services/messenger-chatbox.servic
 })
 export class MessengerChatHeadComponent implements AfterViewInit {
 
-  constructor(private messengerChatboxService: MessengerChatboxService) { }
-
-  chatHeadSwiper: Swiper;
+ chatHeadSwiper: Swiper;
  timer:any
-  users: chatHeadUser[] = [
-    { id: 1, profilePicture: 'assets/images/user1.png' },
-    { id: 2, profilePicture: 'assets/images/user2.png' },
-    { id: 3, profilePicture: 'assets/images/user3.png' },
-    { id: 4, profilePicture: 'assets/images/user4.png' },
-    { id: 5, profilePicture: 'assets/images/user1.png' },
-  ];
-  selectedUser: chatHeadUser = this.users[2];
+ users: chatHeadUser[]=[];
+ selectedUser: chatHeadUser;
+  constructor(private messengerChatboxService: MessengerChatboxService) { 
+    //initalise users    
+    for(let i=1;i<=5;i++){
+        let user: chatHeadUser = {id: i, profilePicture: `assets/images/user${i==5?1:i}.png`};
+        this.users.push(user);
+    }
+    this.selectedUser = this.users[2];
+    // subscribe to change slide observable
+    this.messengerChatboxService.selectedSlideIndex$.subscribe(index => {
+      this.chatHeadSwiper?.slideTo(index);
+      this.selectedUser = this.users[this.chatHeadSwiper?.realIndex];
+    });
+  }
+
+  
+  
 
   ngAfterViewInit(): void {
     setTimeout(() => {
@@ -44,11 +52,6 @@ export class MessengerChatHeadComponent implements AfterViewInit {
       });
     }, 100);
 
-    // subscribe to change slide observable
-    this.messengerChatboxService.selectedSlideIndex$.subscribe(index => {
-      this.chatHeadSwiper?.slideTo(index);
-      this.selectedUser = this.users[this.chatHeadSwiper?.realIndex];
-    });
   }
 
   // on select chathead user

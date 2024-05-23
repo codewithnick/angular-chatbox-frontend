@@ -19,3 +19,13 @@ in messenger-chat.component.html
 
 commit 2:
 added minor css changes to fit responders input
+
+commit 3:
+solved this bug:
+Error: NG0100: ExpressionChangedAfterItHasBeenCheckedError: Expression has changed after it was checked. Previous value: 'false'. Current value: 'true'. Expression location: MessengerChatHeadComponent component. Find more at https://angular.io/errors/NG0100
+
+by moving the subscriber function into the constructor , 
+so it is called only once
+while the component is initialised
+and not after
+
