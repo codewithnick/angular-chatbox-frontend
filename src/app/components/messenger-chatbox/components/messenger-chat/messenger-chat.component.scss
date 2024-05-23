@@ -53,8 +53,7 @@
 
                         .textarea-container {
                             flex: 10;
-                            padding: 8px;
-
+                            padding: 0px;
                             textarea {
                                 width: 100%;
                                 border: none;
@@ -95,9 +94,10 @@
                     }
                     .message{
                         background-blend-mode: overlay;
-                        border: 0.333px solid var(--primary-white);
+                        border-top: 0.333px solid var(--primary-white);
                         padding: 2%;
                         width: 75%;
+                        border-color: rgb(255,255,255,.2);
                     }
 
                     .message.received-message{
@@ -115,10 +115,11 @@
                         backdrop-filter: blur(7.51px);
                         text-align: right;
                         position: relative;
-                        margin-left: 60px;
+                        margin-left: auto;
+                        margin-right: 10px;
                     }
                     .Timestamp{
-                        color: #979897;
+                        color: var(--dark-gray);
                         font-size: 12px;
                         text-align: right;
                     }
