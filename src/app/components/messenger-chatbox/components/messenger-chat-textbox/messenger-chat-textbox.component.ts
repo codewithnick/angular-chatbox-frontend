@@ -50,6 +50,11 @@ export class MessengerChatTextboxComponent implements AfterViewInit{
           fileUrl: null,
           fileIcon: null
         };
+        setTimeout(() => {
+          //scroll to bottom
+          const myelem=document.querySelectorAll('.chatbox-card-body')[this.currentIndex];
+          myelem.scrollTop=myelem.scrollHeight;
+        }, 100);
       }
     }
   
