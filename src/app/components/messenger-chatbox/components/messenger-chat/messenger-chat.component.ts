@@ -45,7 +45,7 @@ export class MessengerChatComponent implements AfterViewInit {
             }
           ]
     }
-    for(let i=0;i<5;i++){
+    for(let i=0;i<Constants.userList.length;i++){
       user_obj.userId = i+1;
       this.userChatBox.push(user_obj);
     }
@@ -57,7 +57,7 @@ export class MessengerChatComponent implements AfterViewInit {
       this.chatboxSwiper = new Swiper('.chat-swiper-container', {
         slideToClickedSlide: true,
         slideActiveClass: 'selected-slide',
-        initialSlide: 2,
+        initialSlide: Constants.userList.length/2,
         spaceBetween: 10,
         effect :'slide',
         speed: 900,

@@ -24,4 +24,14 @@ export class Constants {
         { type: 'rar', icon: 'file-earmark-zip (1).svg' },
         { type: 'pdf', icon: 'filetype-pdf (1).svg' }
     ];
+
+    public static readonly userList=[
+        {id: 1, profilePicture: `assets/images/user1.png`},       
+        {id: 2, profilePicture: `assets/images/user2.png`},
+        {id: 3, profilePicture: `assets/images/user3.png`},
+        {id: 4, profilePicture: `assets/images/user4.png`},
+        {id: 1, profilePicture: `assets/images/user1.png`},
+        {id: 2, profilePicture: `assets/images/user2.png`},
+        {id: 4, profilePicture: `assets/images/user4.png`},
+    ]
 }

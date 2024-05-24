@@ -61,4 +61,9 @@ added alert you are holding my head to all message head components
 by adding touchStartPreventDefault: false to swiperOptions
 
 commit 8:
+updated constants.ts to hold the Userlist
+made changes accordingly in chat and head components to 
+load all users from constants.userlist and 
+made changes in chat component to generate messages for each user
+
 
