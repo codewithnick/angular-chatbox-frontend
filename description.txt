@@ -95,3 +95,26 @@ not optimsed yet as i still have to pass parameters like
   userChatBox: chatBoxMessage[] = [];
 from our html to the component
 
+commit 11:
+using rxjs to share data between components
+
+first i used messagechatboxservice to share all chatbox messages between all components
+which was the problem in last commit
+now i read currentIndex and userChatBox from the service insetad of passing 
+them as parameters
+
+ ngAfterViewInit(): void {
+    //subscribe to changes in user chatbox
+    this.messageService.userChatBox$.subscribe((data) => {
+      this.userChatBox = data;
+    });
+    //subscribe to changes in selected index
+    this.messageService.selectedSlideIndex$.subscribe((data) => {
+      this.currentIndex = data;
+    });
+  }
+
+  in message-chat-textbox component
+now i only pass sender as input to the component (true in messagebox and false for responder)
+all function are same only message type will be decieded by sender attribute
+

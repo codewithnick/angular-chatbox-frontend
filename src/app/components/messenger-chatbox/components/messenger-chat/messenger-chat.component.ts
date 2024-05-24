@@ -45,6 +45,8 @@ export class MessengerChatComponent implements AfterViewInit {
             }
           ]
     });
+    //update data in the service
+    this.messengerChatboxService.setUserChatBox(this.userChatBox);
     }
   }
 
