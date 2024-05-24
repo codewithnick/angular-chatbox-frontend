@@ -25,17 +25,6 @@
                         overflow-y: auto;
                         position: relative;
 
-                        .attachment-card{
-                            .attachment-image{
-                                max-width: 200px;
-                                max-height: 200px;
-                            }
-
-                            .file-icon{
-                                width: 30px;
-                                height: 30px;
-                            }
-                        }
                     }
                     .filepreviewtext{
                         font-size: smaller;
@@ -43,38 +32,8 @@
                         width: 100%;
                         margin-right: 5px;
                     }
+
                     
-                    .message{
-                        background-blend-mode: overlay;
-                        border-top: 0.333px solid var(--primary-white);
-                        padding: 2%;
-                        width: 75%;
-                        border-color: rgb(255,255,255,.2);
-                    }
-
-                    .message.received-message{
-                        border-radius: 10.762px 10.762px 10.762px 0px;
-                        background: #392f39;
-                        background-blend-mode: overlay;
-                        
-                        backdrop-filter: blur(6.66px);
-                    }
-
-                    .message.sent-message{
-                        
-                        border-radius: 10.762px 10.762px 0px 10.762px;
-                        background: #3a3641;
-                        backdrop-filter: blur(7.51px);
-                        text-align: right;
-                        position: relative;
-                        margin-left: auto;
-                        margin-right: 10px;
-                    }
-                    .Timestamp{
-                        color: var(--dark-gray);
-                        font-size: 12px;
-                        text-align: right;
-                    }
                     
                 }
             }
@@ -156,7 +115,7 @@
     }
     @media(max-width: 479px){
         
-        .message,.chatbox-card-footer{
+        .chatbox-card-footer{
             font-size: 8.61px;
             line-height: 12.91px;
             letter-spacing: -1.1%;

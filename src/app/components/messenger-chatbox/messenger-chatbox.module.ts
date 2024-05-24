@@ -10,6 +10,7 @@ import { PickerComponent } from '@ctrl/ngx-emoji-mart';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { register } from 'swiper/element/bundle';
 import { MessengerChatTextboxComponent } from './components/messenger-chat-textbox/messenger-chat-textbox.component';
+import { MessageComponent } from './components/message/message.component';
 
 // Step 2: Add the following line...
 register();
@@ -19,7 +20,8 @@ register();
     MainMessengerChatboxContainerComponent,
     MessengerChatHeadComponent,
     MessengerChatComponent,
-    MessengerChatTextboxComponent
+    MessengerChatTextboxComponent,
+    MessageComponent
   ],
   imports: [
     CommonModule,

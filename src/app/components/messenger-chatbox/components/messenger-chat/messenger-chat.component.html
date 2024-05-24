@@ -7,31 +7,8 @@
                 <div class="chatbox-card">
                     <div class="chatbox-card-body">
                         <div *ngFor="let message of chat['messages']">
-                            <ng-container>
-                                <div class="message mb-3"
-                                    [ngClass]="message.type == 'received' ? 'received-message' : 'sent-message'">
-                                    <!-- display file if not null -->
-                                    <div *ngIf="message.file.file!=null" class="attachment-card mb-3 d-flex align-items-center justify-content-end">
-                                        <!-- image preview -->
-                                        <div *ngIf="isImage(message.file.file); else otherFile">
-                                            <img class="img-fluid attachment-image" [src]="message.file.fileUrl"
-                                                alt="Attachment">
-                                        </div>
-                                        <!-- file preview -->
-                                        <ng-template #otherFile>
-                                            <img class="file-icon me-2" [src]="'assets/images/' + message.file.fileIcon"
-                                                alt="File">
-                                            <div class="file-name">{{ message?.file?.file.name }}</div>
-                                        </ng-template>                                        
-                                    </div>
-                                    <!-- display text content -->
-                                    {{ message.content }}
-                                    <!-- display time -->
-                                    <div class="Timestamp" >
-                                        {{ message.timeStamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit',hourCycle:'h23'}) }}
-                                    </div>
-                                </div>
-                            </ng-container>
+                            <app-message [message]="message" [new]="false">
+                            </app-message>
                         </div>
                     </div>
                     

@@ -118,3 +118,5 @@ them as parameters
 now i only pass sender as input to the component (true in messagebox and false for responder)
 all function are same only message type will be decieded by sender attribute
 
+commit 12:
+decomposed the messages into a separate component
