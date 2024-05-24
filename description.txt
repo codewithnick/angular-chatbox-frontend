@@ -82,3 +82,16 @@ solution:
 rendered the textarea only when the chatboxSwiper index matched the index of the chatbox
 i.e we are on active slide
 
+
+commit 10:
+decomposed the textarea into a separate component
+reused this component again to create the responder input
+not optimsed yet as i still have to pass parameters like
+  @Input()
+  sender:boolean=true;
+  @Input()
+  currentIndex:number=0;
+  @Input()
+  userChatBox: chatBoxMessage[] = [];
+from our html to the component
+

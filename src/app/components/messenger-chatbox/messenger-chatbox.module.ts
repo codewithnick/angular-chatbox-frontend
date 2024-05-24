@@ -9,6 +9,7 @@ import { CircleProgressModule, ProgressBarModule } from 'nextsapien-component-li
 import { PickerComponent } from '@ctrl/ngx-emoji-mart';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { register } from 'swiper/element/bundle';
+import { MessengerChatTextboxComponent } from './components/messenger-chat-textbox/messenger-chat-textbox.component';
 
 // Step 2: Add the following line...
 register();
@@ -17,7 +18,8 @@ register();
   declarations: [
     MainMessengerChatboxContainerComponent,
     MessengerChatHeadComponent,
-    MessengerChatComponent
+    MessengerChatComponent,
+    MessengerChatTextboxComponent
   ],
   imports: [
     CommonModule,
@@ -28,6 +30,6 @@ register();
     FormsModule,
     ReactiveFormsModule
   ],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class MessengerChatboxModule { }

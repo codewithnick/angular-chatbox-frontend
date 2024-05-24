@@ -1,0 +1,9 @@
+.responder-input-container{
+    width: 80%;
+}
+//media queries
+@media (min-width: 426px) {
+    .responder-input-container{
+        width: 55%;
+    }
+}

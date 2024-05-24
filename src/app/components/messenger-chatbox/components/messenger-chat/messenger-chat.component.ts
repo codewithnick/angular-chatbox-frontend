@@ -78,65 +78,10 @@ export class MessengerChatComponent implements AfterViewInit {
     });
   }
 
-  // send message
-  sendMessage() {
-    if (this.newMessageContent.trim() !== '' || this.fileBuffer!=null) {
-      const currentIndex = this.chatboxSwiper?.realIndex;
-      const Time = new Date();
-      let  newMessage:userMessages = { content: this.newMessageContent, type: 'sent',timeStamp: Time,file:this.fileBuffer};
-      this.userChatBox[currentIndex].messages.push(newMessage);
-      this.newMessageContent = '';
-      this.fileBuffer = {
-        file: null,
-        fileUrl: null,
-        fileIcon: null
-      };
-    }
-  }
-
-  // select attachment
-  openFileSelection() {
-    this.attachmentInput.nativeElement.click();
-  }
-
-  // on send attachment
-  handleFileSelect(event: Event) {
-    const inputElement = event.target as HTMLInputElement;
-    const files = inputElement.files;
-    let fileIcon = 'files (1).svg';
-
-    if (files && files.length > 0) {
-      const currentIndex = this.chatboxSwiper?.realIndex;
-
-      const reader = new FileReader();
-      reader.onload = (e: any) => {
-        // for display icon of file
-        Constants.fileIconList.filter((row) => {
-          row.type == files[0].name?.split('.').pop() ? fileIcon = row.icon : '';
-        });
-        this.fileBuffer = {
-          file: files[0],
-          fileUrl: e.target.result,
-          fileIcon: fileIcon
-        }; 
-      };
-
-      // Read the file as a data URL
-      reader.readAsDataURL(files[0]);
-    }
-  }
 
   // check attachment file is image or not
   isImage(file: File): boolean {
     return file.type.startsWith('image/');
   }
 
-  // when click on emoji
-  addEmoji(event:any){
-    console.log(event)
-
-    this.newMessageContent = this.newMessageContent + event.emoji.native;
-  this.showEmojiPallet = false;
-
-  }
 }

@@ -43,55 +43,7 @@
                         width: 100%;
                         margin-right: 5px;
                     }
-                    .chatbox-card-footer{
-                        display: flex;
-                        align-items: stretch;
-                        box-shadow: -0.818px -0.818px 3.272px 0px rgba(203, 199, 209, 0.50) inset, 6.954px 8.999px 8.181px 1.023px rgba(17, 16, 20, 0.70) inset;
-                        border-radius: 13px;
-                        background: var(#27242C, linear-gradient(191deg, #27242C 61.33%, #0C0B0E 101.43%));
-                        
-
-                        .textarea-container {
-                            flex: 10;
-                            padding: 0px;
-                            textarea {
-                                width: 100%;
-                                border: none;
-                                box-shadow: none;
-                                resize: none;
-                                background: transparent;
-                                font-family: 'Gilroy-Regular', sans-serif;
-                                color: var(--light-gray);
-                            }
-
-                            textarea::placeholder{
-                                color: var(--dark-gray);
-                                font-size: 16px;
-                                font-style: normal;
-                                font-weight: 500;
-                                letter-spacing: -0.091px;
-                                font-family: 'Gilroy-Regular', sans-serif;
-                            }
-                        }
-
-                        .icon-container {
-                            flex: 0;
-                            display: flex;
-                            flex-direction: column;
-                            justify-content: space-between;
-                            padding: 5px;
-
-                            .icon {
-                                text-align: center;
-                                cursor: pointer;
-
-                                img {
-                                    width: 16px;
-                                    height: 16px;
-                                }
-                            }
-                        }
-                    }
+                    
                     .message{
                         background-blend-mode: overlay;
                         border-top: 0.333px solid var(--primary-white);

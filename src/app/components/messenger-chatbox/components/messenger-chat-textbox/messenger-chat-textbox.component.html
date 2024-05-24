@@ -1,0 +1,26 @@
+<div *ngIf="fileBuffer.file!=null" class="filepreviewtext">
+    File:{{fileBuffer.file.name}}
+</div>
+<div class="chatbox-card-footer mb-2">
+    <div class="textarea-container">
+        <textarea class="form-control" placeholder="Your Message"  [(ngModel)]="newMessageContent"
+            rows="3"></textarea>
+    </div>
+    <div class="icon-container">
+        <!-- send message -->
+        <div class="icon" (click)="sendMessage()"
+            [class.disabled]="newMessageContent.trim() === ''"><img src="assets/images/send.png">
+        </div>
+        <!-- attachment -->
+        <div class="icon" (click)="openFileSelection()">
+            <img src="assets/images/attachment.png">
+            <!-- Hidden file input for attachment -->
+            <input class="d-none" type="file" #attachmentInput (change)="handleFileSelect($event)">
+        </div>
+        <!-- emoji -->
+        <div class="icon"><img src="assets/images/emoji.png" (click)="showEmojiPallet = !showEmojiPallet">
+            <emoji-mart class="emoji-select" [style]="{ position: 'absolute', top:'75px', right: '50px', width:'300px'}" title="Pick your emoji…" emoji="point_up" (emojiClick)="addEmoji($event)" *ngIf="showEmojiPallet"></emoji-mart>
+        </div>
+    </div>
+    
+</div>
