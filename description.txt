@@ -66,4 +66,19 @@ made changes accordingly in chat and head components to
 load all users from constants.userlist and 
 made changes in chat component to generate messages for each user
 
+commit 9:
+found a bug , when i entered the text in the input box,
+the same text was being entered in all the input boxes
+
+reason:
+<textarea class="form-control" placeholder="Your Message"  [(ngModel)]="newMessageContent"
+rows="3"></textarea>
+newMessageContent was being used as the model for all the input boxes
+so changes were visible in all the input boxes
+
+solution:
+<textarea class="form-control" placeholder="Your Message"  [(ngModel)]="newMessageContent"
+*ngIf="chatboxSwiper?.realIndex===i"    rows="3"></textarea>
+rendered the textarea only when the chatboxSwiper index matched the index of the chatbox
+i.e we are on active slide
 

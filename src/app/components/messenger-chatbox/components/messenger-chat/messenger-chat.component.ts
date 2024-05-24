@@ -28,26 +28,23 @@ export class MessengerChatComponent implements AfterViewInit {
     let yesterday = new Date(date - 1000 * 60 * 60 * 24 * 1);
     let onehourago = new Date(date - 1000 * 60 * 60);
 
-    let user_obj={
-       userId: 1, 
+    
+    for(let i=0;i<Constants.userList.length;i++){
+      this.userChatBox.push({
+       userId: i+1, 
        messages: 
        [
             { content: 'Hi Jake, how are you? I saw on the app that we’ve crossed paths several times this week😄', 
             type: 'received', 
-            contentType: 'text' ,
             file: this.fileBuffer,
             timeStamp:yesterday }, //recieved yesterdays date
             { content: 'Haha truly! Nice to meet you Grace! What about a cup of coffee today evening?☕️', 
             type: 'sent', 
-            contentType: 'text',
             file: this.fileBuffer,
             timeStamp:onehourago //sent 1 hour ago
             }
           ]
-    }
-    for(let i=0;i<Constants.userList.length;i++){
-      user_obj.userId = i+1;
-      this.userChatBox.push(user_obj);
+    });
     }
   }
 

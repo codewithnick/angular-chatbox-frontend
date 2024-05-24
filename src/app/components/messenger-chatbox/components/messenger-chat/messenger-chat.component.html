@@ -41,8 +41,8 @@
                     
                     <div class="chatbox-card-footer mb-2">
                         <div class="textarea-container">
-                            <textarea class="form-control" placeholder="Your Message" [(ngModel)]="newMessageContent"
-                                rows="3"></textarea>
+                            <textarea class="form-control" placeholder="Your Message"  [(ngModel)]="newMessageContent"
+                            *ngIf="chatboxSwiper?.realIndex===i"    rows="3"></textarea>
                         </div>
                         <div class="icon-container">
                             <!-- send message -->
