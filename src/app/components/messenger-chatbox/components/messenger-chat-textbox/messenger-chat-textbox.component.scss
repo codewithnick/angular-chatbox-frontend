@@ -1,3 +1,11 @@
+.filepreviewtext{
+    font-size: smaller;
+    text-align: end;
+    width: 100%;
+    margin-right: 5px;
+    color: var(--light-gray);
+}    
+
 .chatbox-card-footer{
     display: flex;
     align-items: stretch;

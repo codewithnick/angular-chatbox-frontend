@@ -1,9 +1,23 @@
+.footer-container{
+    position: fixed;
+    bottom:0px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
 .responder-input-container{
     width: 80%;
+    margin: auto;
+    align-items: center;
+}
+.responder-input-field{
+    color: white;
+    text-align: center;
+    margin-top: 5px;
 }
 //media queries
-@media (min-width: 426px) {
+@media (min-width: 769px) {
     .responder-input-container{
-        width: 55%;
+        width: 55% !important;
     }
 }

@@ -123,3 +123,6 @@ decomposed the messages into a separate component
 
 commit 13:
 improved sendmessage function to scroll new messages into view
+
+commit 14:
+some minor design improvements

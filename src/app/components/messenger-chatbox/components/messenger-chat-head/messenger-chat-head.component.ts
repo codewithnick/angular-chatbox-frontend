@@ -62,7 +62,7 @@ export class MessengerChatHeadComponent implements AfterViewInit {
     this.selectedUser = user;
   }
   startTimer(): void {
-    console.log("heelloup")
+    //console.log("heelloup")
     this.timer = setTimeout(() => {
       alert('You are holding my head!');
     }, 1500);
