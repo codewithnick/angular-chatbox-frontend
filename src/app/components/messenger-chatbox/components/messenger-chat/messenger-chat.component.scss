@@ -21,6 +21,7 @@
                     padding: 30px;
                     
                     .chatbox-card-body{
+                        height: 25vh !important;
                         padding: 0px;
                         overflow-y: auto;
                         position: relative;
@@ -38,7 +39,8 @@
                 opacity: 1;
                 .chatbox-card{
                     .chatbox-card-body{
-                        height: fit-content;
+                        height: 32vh !important;
+                        overflow-y: scroll !important;
                         padding: 5px;
                         margin: 0px;
                     }

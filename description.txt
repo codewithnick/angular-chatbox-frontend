@@ -1,6 +1,6 @@
 run instructions:
 1. npm install
-2. cd ./dist/out-tsc
+2. ng build
 3. ng serve
 
 commit 1:
