@@ -126,3 +126,6 @@ improved sendmessage function to scroll new messages into view
 
 commit 14:
 some minor design improvements
+
+commit 15:
+added progressNumber to each userHead

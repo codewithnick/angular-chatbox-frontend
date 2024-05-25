@@ -3,6 +3,7 @@ import { Time } from "@angular/common";
 export interface chatHeadUser {
     id: number;
     profilePicture: string;
+    progressNumber:number;
 }
 
 export interface userMessages {

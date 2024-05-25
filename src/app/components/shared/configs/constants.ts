@@ -26,12 +26,12 @@ export class Constants {
     ];
 
     public static readonly userList=[
-        {id: 1, profilePicture: `assets/images/user1.png`},       
-        {id: 2, profilePicture: `assets/images/user2.png`},
-        {id: 3, profilePicture: `assets/images/user3.png`},
-        {id: 4, profilePicture: `assets/images/user4.png`},
-        {id: 1, profilePicture: `assets/images/user1.png`},
-        {id: 2, profilePicture: `assets/images/user2.png`},
-        {id: 4, profilePicture: `assets/images/user4.png`},
+        {id: 1, profilePicture: `assets/images/user1.png`,progressNumber:1},       
+        {id: 2, profilePicture: `assets/images/user2.png`,progressNumber:2},
+        {id: 3, profilePicture: `assets/images/user3.png`,progressNumber:3},
+        {id: 4, profilePicture: `assets/images/user4.png`,progressNumber:4},
+        {id: 1, profilePicture: `assets/images/user1.png`,progressNumber:5},
+        {id: 2, profilePicture: `assets/images/user2.png`,progressNumber:6},
+        {id: 4, profilePicture: `assets/images/user4.png`,progressNumber:7},
     ]
 }
