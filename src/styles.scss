@@ -3,7 +3,7 @@
 @import '@ctrl/ngx-emoji-mart/picker';
 @font-face {
   font-family: 'gilroy';
-  src: url('../assets/fonts/gilroy/Gilroy-Regular.ttf') format('truetype');
+  src: url('/assets/fonts/gilroy/Gilroy-Regular.ttf') format('truetype');
 }
 *{
     font-family: 'gilroy';
