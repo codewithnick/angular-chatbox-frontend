@@ -18,7 +18,7 @@
                     border-radius: 11.17px;
                     background: var(--secondary-black);
                     box-shadow: 4.654px 4.654px 9.309px 0px rgba(0, 0, 0, 0.32) inset, -2.793px -2.793px 3.723px 0px rgba(255, 255, 255, 0.10) inset;
-                    padding: 30px;
+                    padding: 15px;
                     
                     .chatbox-card-body{
                         height: 25vh !important;
@@ -56,7 +56,7 @@
         }
     }
 
-    @media screen and (max-width: 576px) {
+    @media (max-width: 576px) {
         .Timestamp{
             font-size: 6px !important;
         }
@@ -82,31 +82,31 @@
 
     @media screen and (min-width: 320px) and (max-width: 360.98px) {
         .chatbox-card{
-            width: 320px !important;
+            width: 290px !important;
         }
     }
 
     @media screen and (min-width: 361px) and (max-width: 390.98px) {
         .chatbox-card{
-            width: 360px !important;
+            width: 340px !important;
         }
     }
 
     @media screen and (min-width: 391px) and (max-width: 480.98px) {
         .chatbox-card{
-            width: 390px !important;
+            width: 360px !important;
         }
     }
 
     @media screen and (min-width: 481px) and (max-width: 576.98px) {
         .chatbox-card{
-            width: 480px !important;
+            width: 450px !important;
         }
     }
 
     @media screen and (min-width: 577px) and (max-width: 767.98px) {
         .chatbox-card{
-            width: 570px !important;
+            width: 540px !important;
         }
     }
     @media(max-width: 479px){
@@ -136,12 +136,6 @@
         }
         .chat-swiper-container {
                 padding: 0 16px!important; }
-        
-        .chatbox-card{
-           
-            width: 270px !important;
-            padding: 10px!important;
-        }
        textarea.form-control.ng-untouched.ng-pristine.ng-valid::placeholder {
             font-size: 8px!important;
         }

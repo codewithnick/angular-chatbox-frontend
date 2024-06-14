@@ -15,9 +15,10 @@
 .message{
     background-blend-mode: overlay;
     border-top: 0.333px solid var(--primary-white);
-    padding: 2%;
-    width: 75%;
+    padding: 1%;
+    width: 85%;
     border-color: rgb(255,255,255,.2);
+    justify-content: center;
     .Timestamp{
         color: var(--dark-gray);
         font-size: 12px;
@@ -29,7 +30,7 @@
     border-radius: 10.762px 10.762px 10.762px 0px;
     background: #392f39;
     background-blend-mode: overlay;
-    
+    text-align: left;
     backdrop-filter: blur(6.66px);
 }
 
@@ -44,20 +45,23 @@
     margin-right: 10px;
 }
 
-@media(max-width: 479px){
+@media(max-width: 576px){
         
     .message{
         font-size: 8.61px;
         line-height: 12.91px;
         letter-spacing: -1.1%;
         font-weight: 500;
-        text-align: right;
         margin-bottom: 9px!important;
         margin-top: 9px!important;
         border: 0!important;
         border-top: 1px solid!important;
         border-color: rgb(255,255,255,.2)!important;
         margin-left: 10px;
+        padding: 5px 15px 0px 15px;
+    }
+    .Timestamp{
+        font-size: 6px !important;
     }
     .chatbox-card-body{
         height: auto! important;
@@ -72,11 +76,7 @@
     .chat-swiper-container {
             padding: 0 16px!important; }
     
-    .chatbox-card{
-       
-        width: 270px !important;
-        padding: 10px!important;
-    }
+    
    textarea.form-control.ng-untouched.ng-pristine.ng-valid::placeholder {
         font-size: 8px!important;
     }
