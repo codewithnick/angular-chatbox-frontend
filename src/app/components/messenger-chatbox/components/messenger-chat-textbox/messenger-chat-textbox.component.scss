@@ -9,6 +9,7 @@
 .chatbox-card-footer{
     display: flex;
     align-items: stretch;
+    padding: 7px;
     box-shadow: -1px -2px 3.272px 0px rgba(203, 199, 209, 0.5) inset, 8px 17px 20px 3px rgba(17, 16, 20, 0.7) inset;
     border-radius: 13px;
     background: var(#27242C, linear-gradient(191deg, #27242C 61.33%, #0C0B0E 101.43%));
@@ -58,6 +59,16 @@
             bottom: 0px;
             left: 50%;
             width: 300px;
+        }
+    }
+}
+//for mobile
+@media (max-width: 768px) {
+    .chatbox-card-footer{
+        .textarea-container {
+            textarea::placeholder{
+                font-size: 12px;
+            }
         }
     }
 }
