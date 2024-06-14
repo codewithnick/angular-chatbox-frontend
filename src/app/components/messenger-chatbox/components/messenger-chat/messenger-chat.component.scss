@@ -5,7 +5,7 @@
     
         .swiper-wrapper{
             width: fit-content;
-        
+            position: static;
             .swiper-slide {
                 background-position: center;
                 background-size: cover;
@@ -23,8 +23,7 @@
                     .chatbox-card-body{
                         height: 25vh !important;
                         padding: 0px;
-                        overflow-y: auto;
-                        position: relative;
+                        overflow-y: visible;
 
                     }
                     

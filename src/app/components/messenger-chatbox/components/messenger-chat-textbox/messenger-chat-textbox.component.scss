@@ -70,5 +70,13 @@
                 font-size: 12px;
             }
         }
+        .icon-container{
+            .emoji-select{
+                position: fixed;
+                width: 300px;
+                left:0px;
+                bottom:0px;
+            }
+        }
     }
 }
