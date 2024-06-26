@@ -31,7 +31,5 @@ export class Constants {
         {id: 3, profilePicture: `assets/images/user3.png`,progressNumber:3},
         {id: 4, profilePicture: `assets/images/user4.png`,progressNumber:4},
         {id: 1, profilePicture: `assets/images/user1.png`,progressNumber:5},
-        {id: 2, profilePicture: `assets/images/user2.png`,progressNumber:6},
-        {id: 4, profilePicture: `assets/images/user4.png`,progressNumber:7},
     ]
 }

@@ -44,7 +44,10 @@
         flex-direction: column;
         justify-content: space-between;
         padding: 5px;
-
+        .disabled{
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
         .icon {
             text-align: center;
             cursor: pointer;
