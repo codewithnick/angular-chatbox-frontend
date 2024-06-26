@@ -48,3 +48,17 @@
       }
   
 }
+//for mobile devices
+@media screen and (min-width: 320px) and (max-width: 360.98px) {
+  .messenger-chat-head {
+    .swiper-container {
+      padding: 6px;
+      .swiper-slide {
+        .profile-picture {
+          width: 32px !important;
+          height: 32px !important;
+        }
+      }
+    }
+  }
+}
