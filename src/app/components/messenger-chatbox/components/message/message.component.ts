@@ -1,4 +1,4 @@
-import { AfterContentInit, AfterViewInit, Component,ElementRef,Input, ViewChild } from '@angular/core';
+import { Component,Input } from '@angular/core';
 import { userMessages } from '../../model/messenger-chatbox.model';
 
 @Component({
@@ -6,15 +6,13 @@ import { userMessages } from '../../model/messenger-chatbox.model';
   templateUrl: './message.component.html',
   styleUrl: './message.component.scss'
 })
-export class MessageComponent implements AfterContentInit{
+export class MessageComponent{
 @Input() message: userMessages;
 
-constructor(public thisElement: ElementRef) { }
+constructor() { }
  // check attachment file is image or not
  isImage(file: File): boolean {
   return file.type.startsWith('image/');
 }
 
-  ngAfterContentInit(): void {
-  }
 }
