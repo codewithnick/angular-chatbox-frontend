@@ -11,19 +11,19 @@ import { Constants } from 'src/app/components/shared/configs/constants';
 })
 export class MessengerChatComponent implements AfterViewInit {
 
-  chatboxSwiper: Swiper;
-  newMessageContent: string = '';
-  showEmojiPallet:boolean = false;
+  private chatboxSwiper: Swiper;
+  protected newMessageContent: string = '';
+  protected showEmojiPallet:boolean = false;
   @ViewChild('attachmentInput') attachmentInput: ElementRef;
-  userChatBox: chatBoxMessage[] = []
-  currentDate:Date=new Date();
-  fileBuffer: myFile= {
+  protected userChatBox: chatBoxMessage[] = []
+  protected currentDate:Date=new Date();
+  private fileBuffer: myFile= {
     file: null,
     fileUrl: null,
     fileIcon: null
   
   };
-  constructor(private messengerChatboxService: MessengerChatboxService) {
+  ngOnInit(): void {
     let date = new Date().getTime();   
     let yesterday = new Date(date - 1000 * 60 * 60 * 24 * 1);
     let onehourago = new Date(date - 1000 * 60 * 60);
@@ -45,9 +45,11 @@ export class MessengerChatComponent implements AfterViewInit {
             }
           ]
     });
+   }
+  }
+  constructor(private messengerChatboxService: MessengerChatboxService) {
     //update data in the service
     this.messengerChatboxService.setUserChatBox(this.userChatBox);
-    }
   }
 
   ngAfterViewInit(): void {
