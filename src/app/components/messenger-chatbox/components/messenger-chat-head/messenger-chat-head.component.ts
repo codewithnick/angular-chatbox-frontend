@@ -3,6 +3,7 @@ import Swiper from 'swiper';
 import { chatHeadUser } from '../../model/messenger-chatbox.model';
 import { MessengerChatboxService } from '../../services/messenger-chatbox.service';
 import { Constants } from 'src/app/components/shared/configs/constants';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-messenger-chat-head',
@@ -11,21 +12,23 @@ import { Constants } from 'src/app/components/shared/configs/constants';
 })
 export class MessengerChatHeadComponent implements AfterViewInit {
 
- chatHeadSwiper: Swiper;
- timer:any
- users: chatHeadUser[]=[];
- selectedUser: chatHeadUser;
+ private chatHeadSwiper: Swiper;
+ private timer:ReturnType<typeof setTimeout>;
+ private subscription: Subscription;
+ protected users: chatHeadUser[]=[];
+ protected selectedUser: chatHeadUser;
   constructor(private messengerChatboxService: MessengerChatboxService) { 
-    //initalise users    
-    this.users=Constants.userList;
-    this.selectedUser = this.users[Constants.userList.length/2];
     // subscribe to change slide observable
-    this.messengerChatboxService.selectedSlideIndex$.subscribe(index => {
+    this.subscription=this.messengerChatboxService.selectedSlideIndex$.subscribe(index => {
       this.chatHeadSwiper?.slideTo(index);
       this.selectedUser = this.users[this.chatHeadSwiper?.realIndex];
     });
   }
-
+  ngOnInit(){
+    //initalise users    
+    this.users=Constants.userList;
+    this.selectedUser = this.users[Constants.userList.length/2];
+  }
   
   
 
@@ -58,17 +61,20 @@ export class MessengerChatHeadComponent implements AfterViewInit {
   }
 
   // on select chathead user
-  selectUser(user: chatHeadUser) {
+  protected selectUser(user: chatHeadUser) {
     this.selectedUser = user;
   }
-  startTimer(): void {
+  protected startTimer(): void {
     //console.log("heelloup")
     this.timer = setTimeout(() => {
       alert('You are holding my head!');
     }, 1500);
   }
 
-  endTimer(): void {
+  protected endTimer(): void {
     clearTimeout(this.timer);
+  }
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 }

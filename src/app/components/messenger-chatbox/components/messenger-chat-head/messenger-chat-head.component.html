@@ -1,4 +1,4 @@
-<div class="messenger-chat-head" (mousedown)="startTimer()" (mouseup)="endTimer()">
+<div class="messenger-chat-head" (mousedown)="startTimer()" (mouseup)="endTimer()" (touchstart)="startTimer()" (touchend)="endTimer()">
         <div class="swiper-container">
             <div class="swiper-wrapper align-items-center">
                 <div class="swiper-slide" *ngFor="let user of users" (click)="selectUser(user)">
