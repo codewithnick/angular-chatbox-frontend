@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, ViewChild, Input, OnDestroy } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, ViewChild, Input, OnDestroy, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { chatBoxMessage, myFile, userMessages } from '../../model/messenger-chatbox.model';
 import { Constants } from 'src/app/components/shared/configs/constants';
@@ -7,7 +7,8 @@ import { MessengerChatboxService } from '../../services/messenger-chatbox.servic
 @Component({
   selector: 'app-messenger-chat-textbox',
   templateUrl: './messenger-chat-textbox.component.html',
-  styleUrls: ['./messenger-chat-textbox.component.scss']
+  styleUrls: ['./messenger-chat-textbox.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MessengerChatTextboxComponent implements AfterViewInit, OnDestroy {
   @Input()
@@ -27,9 +28,10 @@ export class MessengerChatTextboxComponent implements AfterViewInit, OnDestroy {
 
   private subscriptions: Subscription = new Subscription();
 
-  constructor(private messageService: MessengerChatboxService) {}
+  constructor(private messageService: MessengerChatboxService,private cdr: ChangeDetectorRef) {}
 
   ngAfterViewInit(): void {
+    this.cdr.detectChanges();
     //subscribe to changes in user chatbox
     this.subscriptions.add(
       this.messageService.userChatBox$.subscribe((data: chatBoxMessage[]) => {

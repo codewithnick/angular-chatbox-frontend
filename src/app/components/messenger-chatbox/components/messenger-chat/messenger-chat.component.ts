@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, ViewChild } from '@angular/core';
 import Swiper from 'swiper';
 import { MessengerChatboxService } from '../../services/messenger-chatbox.service';
 import { chatBoxMessage, userMessages,myFile } from '../../model/messenger-chatbox.model';
@@ -7,7 +7,7 @@ import { Constants } from 'src/app/components/shared/configs/constants';
 @Component({
   selector: 'app-messenger-chat',
   templateUrl: './messenger-chat.component.html',
-  styleUrls: ['./messenger-chat.component.scss']
+  styleUrls: ['./messenger-chat.component.scss'],
 })
 export class MessengerChatComponent implements AfterViewInit {
 
@@ -47,7 +47,9 @@ export class MessengerChatComponent implements AfterViewInit {
     });
    }
   }
-  constructor(private messengerChatboxService: MessengerChatboxService) {
+  constructor(private messengerChatboxService: MessengerChatboxService,
+    private cdr: ChangeDetectorRef
+  ) {
     //update data in the service
     this.messengerChatboxService.setUserChatBox(this.userChatBox);
   }

@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ViewChild } from '@angular/core';
 import Swiper from 'swiper';
 import { chatHeadUser } from '../../model/messenger-chatbox.model';
 import { MessengerChatboxService } from '../../services/messenger-chatbox.service';
@@ -8,7 +8,8 @@ import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-messenger-chat-head',
   templateUrl: './messenger-chat-head.component.html',
-  styleUrls: ['./messenger-chat-head.component.scss']
+  styleUrls: ['./messenger-chat-head.component.scss'],
+  changeDetection : ChangeDetectionStrategy.OnPush
 })
 export class MessengerChatHeadComponent implements AfterViewInit {
 
@@ -17,17 +18,20 @@ export class MessengerChatHeadComponent implements AfterViewInit {
  private subscription: Subscription;
  protected users: chatHeadUser[]=[];
  protected selectedUser: chatHeadUser;
-  constructor(private messengerChatboxService: MessengerChatboxService) { 
+  constructor(private messengerChatboxService: MessengerChatboxService,
+    private cdr:ChangeDetectorRef
+  ) { }
+  ngOnInit(){
+    this.cdr.markForCheck();
+    //initalise users    
+    this.users=Constants.userList;
+    this.selectedUser = this.users[Constants.userList.length/2];
     // subscribe to change slide observable
     this.subscription=this.messengerChatboxService.selectedSlideIndex$.subscribe(index => {
       this.chatHeadSwiper?.slideTo(index);
       this.selectedUser = this.users[this.chatHeadSwiper?.realIndex];
+      this.cdr.detectChanges();
     });
-  }
-  ngOnInit(){
-    //initalise users    
-    this.users=Constants.userList;
-    this.selectedUser = this.users[Constants.userList.length/2];
   }
   
   
