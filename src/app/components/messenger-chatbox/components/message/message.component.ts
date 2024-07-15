@@ -12,7 +12,7 @@ export class MessageComponent{
 
 constructor() { }
  // check attachment file is image or not
- isImage(file: File): boolean {
+ protected isImage(file: File): boolean {
   return file.type.startsWith('image/');
 }
 

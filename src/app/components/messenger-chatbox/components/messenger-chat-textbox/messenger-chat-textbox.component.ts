@@ -3,6 +3,7 @@ import { Subscription } from 'rxjs';
 import { chatBoxMessage, myFile, userMessages } from '../../model/messenger-chatbox.model';
 import { Constants } from 'src/app/components/shared/configs/constants';
 import { MessengerChatboxService } from '../../services/messenger-chatbox.service';
+import { EmojiEvent } from '@ctrl/ngx-emoji-mart/ngx-emoji';
 
 @Component({
   selector: 'app-messenger-chat-textbox',
@@ -109,6 +110,7 @@ export class MessengerChatTextboxComponent implements AfterViewInit, OnDestroy {
           fileUrl: e.target?.result as string,
           fileIcon: fileIcon
         };
+        reader.abort();
       };
 
       // Read the file as a data URL
@@ -117,7 +119,7 @@ export class MessengerChatTextboxComponent implements AfterViewInit, OnDestroy {
   }
 
   // when click on emoji
-  protected addEmoji(event: any): void {
+  protected addEmoji(event: EmojiEvent): void {
     console.log(event);
     this.newMessageContent += event.emoji.native;
     this.showEmojiPallet = false;

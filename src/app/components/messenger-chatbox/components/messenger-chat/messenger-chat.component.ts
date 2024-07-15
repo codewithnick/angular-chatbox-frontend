@@ -23,37 +23,14 @@ export class MessengerChatComponent implements AfterViewInit {
     fileIcon: null
   
   };
-  ngOnInit(): void {
-    let date = new Date().getTime();   
-    let yesterday = new Date(date - 1000 * 60 * 60 * 24 * 1);
-    let onehourago = new Date(date - 1000 * 60 * 60);
 
-    
-    for(let i=0;i<Constants.userList.length;i++){
-      this.userChatBox.push({
-       userId: i+1, 
-       messages: 
-       [
-            { content: 'Hi Jake, how are you? I saw on the app that we’ve crossed paths several times this week😄', 
-            type: 'received', 
-            file: this.fileBuffer,
-            timeStamp:yesterday }, //recieved yesterdays date
-            { content: 'Haha truly! Nice to meet you Grace! What about a cup of coffee today evening?☕️', 
-            type: 'sent', 
-            file: this.fileBuffer,
-            timeStamp:onehourago //sent 1 hour ago
-            }
-          ]
-    });
-   }
-  }
-  constructor(private messengerChatboxService: MessengerChatboxService,
-    private cdr: ChangeDetectorRef
-  ) {
+  constructor(private messengerChatboxService: MessengerChatboxService) {
     //update data in the service
     this.messengerChatboxService.setUserChatBox(this.userChatBox);
   }
-
+  ngOnInit(): void {
+    this.initMessages();
+  }
   ngAfterViewInit(): void {
     setTimeout(() => {
       // initialize chat swiper with config
@@ -84,9 +61,34 @@ export class MessengerChatComponent implements AfterViewInit {
     });
   }
 
+  //function to intialise messages
+  private initMessages(){
+    let date = new Date().getTime();   
+    let yesterday = new Date(date - 1000 * 60 * 60 * 24 * 1);
+    let onehourago = new Date(date - 1000 * 60 * 60);
+
+    
+    for(let i=0;i<Constants.userList.length;i++){
+      this.userChatBox.push({
+       userId: i+1, 
+       messages: 
+       [
+            { content: 'Hi Jake, how are you? I saw on the app that we’ve crossed paths several times this week😄', 
+            type: 'received', 
+            file: this.fileBuffer,
+            timeStamp:yesterday }, //recieved yesterdays date
+            { content: 'Haha truly! Nice to meet you Grace! What about a cup of coffee today evening?☕️', 
+            type: 'sent', 
+            file: this.fileBuffer,
+            timeStamp:onehourago //sent 1 hour ago
+            }
+          ]
+      });
+    }
+  }
 
   // check attachment file is image or not
-  isImage(file: File): boolean {
+  protected isImage(file: File): boolean {
     return file.type.startsWith('image/');
   }
 
