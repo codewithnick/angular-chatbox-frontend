@@ -63,7 +63,9 @@ export class MessengerChatTextboxComponent implements AfterViewInit, OnDestroy {
         file: this.fileBuffer
       };
 
-      this.userChatBox[this.currentIndex].messages.push(newMessage);
+      let chatbox=this.userChatBox;
+      chatbox[this.currentIndex].messages.push(newMessage)
+      this.messageService.setUserChatBox(chatbox);
       this.resetMessageContent();
 
       setTimeout(() => {
@@ -110,6 +112,7 @@ export class MessengerChatTextboxComponent implements AfterViewInit, OnDestroy {
           fileUrl: e.target?.result as string,
           fileIcon: fileIcon
         };
+        this.cdr.detectChanges();
         reader.abort();
       };
 

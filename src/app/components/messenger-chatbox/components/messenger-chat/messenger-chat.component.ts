@@ -8,6 +8,7 @@ import { Constants } from 'src/app/components/shared/configs/constants';
   selector: 'app-messenger-chat',
   templateUrl: './messenger-chat.component.html',
   styleUrls: ['./messenger-chat.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MessengerChatComponent implements AfterViewInit {
 
@@ -24,7 +25,7 @@ export class MessengerChatComponent implements AfterViewInit {
   
   };
 
-  constructor(private messengerChatboxService: MessengerChatboxService) {
+  constructor(private cdr:ChangeDetectorRef, private messengerChatboxService: MessengerChatboxService) {
     //update data in the service
     this.messengerChatboxService.setUserChatBox(this.userChatBox);
   }
@@ -59,6 +60,12 @@ export class MessengerChatComponent implements AfterViewInit {
     this.messengerChatboxService.selectedSlideIndex$.subscribe(index => {
       this.chatboxSwiper?.slideTo(index);
     });
+    //subscribe to changes in  userchatbox
+    this.messengerChatboxService.userChatBox$.subscribe(chatbox=>{
+      this.userChatBox=[...chatbox];
+      console.log('hi');
+      this.cdr.detectChanges();
+    })
   }
 
   //function to intialise messages

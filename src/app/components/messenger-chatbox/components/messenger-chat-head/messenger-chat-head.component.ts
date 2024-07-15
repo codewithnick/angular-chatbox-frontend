@@ -50,6 +50,7 @@ export class MessengerChatHeadComponent implements AfterViewInit {
         grabCursor: true,
         centeredSlides: true,
         slidesPerView: 'auto',
+        followFinger: false,
         on: {
           // set index of service when slide change
           slideChange: () => {
@@ -72,6 +73,7 @@ export class MessengerChatHeadComponent implements AfterViewInit {
     //console.log("heelloup")
     this.timer = setTimeout(() => {
       alert('You are holding my head!');
+      this.endTimer();
     }, 1500);
   }
 
